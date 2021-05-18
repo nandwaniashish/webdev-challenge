@@ -44,4 +44,7 @@ all cards in the box should extend tp have the same height
 
 .heading {
   padding-top: 1rem;
+  color: #373942;
+  font-weight: 600;
+  font-size: 1rem;
 }

@@ -4,6 +4,13 @@
 
 /* ref: https://preset-env.cssdb.org/ */
 
-.myData {
-  color: yellow;
+.searchForm {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.people {
+  margin: 3rem auto;
 }

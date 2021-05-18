@@ -6,7 +6,7 @@ const People = ({ name, title, deptName, avatarUrl }) => {
         <div className={styles.imageWrapper}>
           <img src={avatarUrl} alt={name} className={styles.profilePic}></img>
         </div>
-        <h6 className={`${styles.heading} ${styles.desc}`}>{name}</h6>
+        <h3 className={`${styles.heading} ${styles.desc}`}>{name}</h3>
         <p className={`paragraph ${styles.desc}`}>{deptName}</p>
         <p className={`paragraph ${styles.title}`}>{title}</p>
       </div>
