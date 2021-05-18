@@ -6,8 +6,9 @@
 # You may want / need to edit this query!
 
 query {
-  allDepartments(first: 100) {
+  allDepartments(first: 100, orderBy: name_ASC) {
     name
+    id
     parent {
       id
     }
@@ -19,7 +20,10 @@ query {
       url
     }
     department {
+      id
       name
     }
+    title
+    id
   }
 }
