@@ -1,6 +1,7 @@
 import Input from '../common/input'
 import styles from './search.module.css'
 import PropTypes from 'prop-types'
+import icon from './search.svg'
 
 const EmployeeSearch = ({ onSearch, searchTerm }) => {
   return (
@@ -15,6 +16,7 @@ const EmployeeSearch = ({ onSearch, searchTerm }) => {
         onChange={onSearch}
         value={searchTerm}
         visuallyHideLabel={true}
+        icon={icon}
       ></Input>
     </div>
   )

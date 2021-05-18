@@ -12,6 +12,7 @@ const Input = ({
   onChange,
   visuallyHideLabel,
   onBlur,
+  icon,
   ...rest
 }) => {
   return (
@@ -26,6 +27,7 @@ const Input = ({
         id={id}
         type={type || 'text'}
         name={name || id}
+        style={{ backgroundImage: `url(${icon})` }}
         aria-describedby={describedBy}
         onChange={onChange}
         onBlur={onBlur}
