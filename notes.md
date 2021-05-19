@@ -20,6 +20,8 @@
 - Tree Patten [a11y and behavior](https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-2/treeview-2a.html)
 - Link color?
 - Keyboard Behavior?
+- would it be more intiutive to have a clear all departments filter?
+  - Tree view works perfectly for docs but may have issues in experience while using it as a filter?
 
 ### Unit tests
 
