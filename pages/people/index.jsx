@@ -9,9 +9,10 @@ import {
   HidePeople,
   PeopleList,
   LiveRegion,
+  TreeView,
 } from '../../components'
 
-function PeoplePage({ allPeople }) {
+function PeoplePage({ allPeople, allDepartments }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [hideMissingImagePeople, setHideMissingImagePeople] = useState(false)
 
@@ -36,8 +37,8 @@ function PeoplePage({ allPeople }) {
   }
   return (
     //TODO: pull content from a separate localized file
-    <section className={`${styles.people} row`}>
-      <section className={`${styles.searchForm} row`}>
+    <section className={`${styles.people} g-container row`}>
+      <form className={`${styles.searchForm} row`} role="search">
         <PageHeader
           heading="HashiCorp Humans"
           subHeading="Find a HashiCorp human"
@@ -47,8 +48,11 @@ function PeoplePage({ allPeople }) {
         />
         <PeopleSearch onSearch={handleSearchTerm} searchTerm={searchTerm} />
         <HidePeople onHide={hidePeopleWithNoImage}></HidePeople>
-      </section>
-      {/* <aside></aside> */}
+      </form>
+      <aside>
+        <h2>Filter by department</h2>
+        <TreeView rootNodes={allDepartments}></TreeView>
+      </aside>
       <section className="column" id="search-results">
         <h2 className="visually-hidden">Search Results</h2>
         <PeopleList peopleList={filteredEmployeesList}></PeopleList>

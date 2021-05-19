@@ -4,13 +4,24 @@
 
 /* ref: https://preset-env.cssdb.org/ */
 
-.searchForm {
+.people {
+  margin: 3rem auto;
+
+& .searchForm {
   display: flex;
   flex-flow: column wrap;
   text-align: center;
-  padding: 0 1rem;
 }
 
-.people {
-  margin: 3rem auto;
+& h2 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+}
+
+@media all and (min-width: 40em) {
+  /** changes based on font-size; zomming/magnifying **/
+  .people aside {
+    display: none;
+  }
 }
