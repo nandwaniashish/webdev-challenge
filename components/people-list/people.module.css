@@ -48,3 +48,31 @@ all cards in the box should extend tp have the same height
   font-weight: 600;
   font-size: 1rem;
 }
+
+@media all and (min-width: 30em) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+@media all and (min-width: 40em) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+@media all and (min-width: 60em) {
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media all and (min-width: 80em) {
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media all and (min-width: 100em) {
+  .card {
+    width: calc(25% - 2rem);
+  }
+}

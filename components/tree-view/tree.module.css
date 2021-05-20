@@ -1,0 +1,40 @@
+.treeView ul {
+  list-style-type: none;
+  line-height: 2.4rem;
+
+  & li {
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+}
+
+.treeView .expanded span {
+  position: relative;
+}
+
+.treeView span div {
+  display: none;
+}
+
+.treeView .expanded > span div {
+  display: flex;
+  position: relative;
+  top: -20px;
+  left: -13px;
+  transition: transform 0.15s ease;
+}
+
+.treeView .expanded.selected > span div {
+  position: absolute;
+  transform: rotate(90deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  top: 10px;
+}
+
+.treeView span:hover,
+.treeView span.selected {
+  color: #f85c94;
+}

@@ -13,15 +13,31 @@ import {
 } from '../../components'
 
 function PeoplePage({ allPeople, allDepartments }) {
+  //TODO: switch to class component or use `useCallback` for performance
   const [searchTerm, setSearchTerm] = useState('')
   const [hideMissingImagePeople, setHideMissingImagePeople] = useState(false)
+  const [activeNode, setActiveNode] = useState(null)
+  const [expandedNodes, setExpandedNodes] = useState({})
 
   const handleSearchTerm = (event) => {
     setSearchTerm(event.target.value)
   }
-
   const hidePeopleWithNoImage = (event) => {
     setHideMissingImagePeople(event.target.checked)
+  }
+
+  const onNodeSelect = (event, node) => {
+    setActiveNode(node)
+  }
+
+  const onToggle = (node) => {
+    if (expandedNodes[node.id]) {
+      expandedNodes[node.id] = !expandedNodes[node.id]
+    } else {
+      expandedNodes[node.id] = true
+    }
+    console.log(expandedNodes, 'nodes')
+    setExpandedNodes({ ...expandedNodes })
   }
 
   //TODO: Pass these filters over to the PeopleList component
@@ -30,9 +46,16 @@ function PeoplePage({ allPeople, allDepartments }) {
     return people.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
+  //Filters could be applied on other existing filters
   if (hideMissingImagePeople) {
     filteredEmployeesList = filteredEmployeesList.filter((people) => {
       return people.avatar
+    })
+  }
+  // Filter people based on the active selection
+  if (activeNode && activeNode.id) {
+    filteredEmployeesList = filteredEmployeesList.filter((people) => {
+      return people.department.id === activeNode.id
     })
   }
   return (
@@ -49,11 +72,20 @@ function PeoplePage({ allPeople, allDepartments }) {
         <PeopleSearch onSearch={handleSearchTerm} searchTerm={searchTerm} />
         <HidePeople onHide={hidePeopleWithNoImage}></HidePeople>
       </form>
-      <aside>
+      <aside
+        className={`${styles.departmentFilter} ${styles.sticky}`}
+        id="department-filter"
+      >
         <h2>Filter by department</h2>
-        <TreeView rootNodes={allDepartments}></TreeView>
+        <TreeView
+          rootNodes={allDepartments}
+          activeNode={activeNode}
+          onToggle={onToggle}
+          onSelect={onNodeSelect}
+          expandedNodes={expandedNodes}
+        ></TreeView>
       </aside>
-      <section className="column" id="search-results">
+      <section className={`${styles.searchResults} column`} id="search-results">
         <h2 className="visually-hidden">Search Results</h2>
         <PeopleList peopleList={filteredEmployeesList}></PeopleList>
       </section>

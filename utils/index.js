@@ -1,3 +1,4 @@
 import createDataTree from './createDataTree'
+import { isActive, isExpanded } from './nodeOperations'
 
-export { createDataTree }
+export { createDataTree, isActive, isExpanded }
