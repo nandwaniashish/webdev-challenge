@@ -38,3 +38,10 @@
 .treeView span.selected {
   color: #f85c94;
 }
+
+.treeView .expanded.selected > ul {
+  display: inline-block;
+  border-left: 1px solid #cbcbcb;
+  margin-left: 0;
+  padding-left: 1em;
+}
