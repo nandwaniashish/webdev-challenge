@@ -1,0 +1,17 @@
+.search input {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  border: 1px solid #989cac;
+  color: #4c4f5b;
+  text-align: center;
+  min-height: 3rem;
+  border-radius: 48px;
+  background-position: 2% 50%;
+  background-repeat: no-repeat;
+}
+
+/** TODO:check contrast **/
+.search ::placeholder {
+  color: #989cac;
+}

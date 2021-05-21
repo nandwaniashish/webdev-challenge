@@ -1,0 +1,78 @@
+/**
+image border
+**/
+.imageWrapper {
+  width: 105px;
+  height: 105px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profilePic {
+  margin: 0 auto;
+  height: 100%;
+}
+
+/**
+all cards in the box should extend tp have the same height
+**/
+.card {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  border: 1px solid;
+  text-align: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  transition: ease all 300ms;
+}
+
+.listContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.desc,
+.title {
+  margin: 0;
+  flex: 1 0 auto;
+}
+
+.heading {
+  padding-top: 1rem;
+  color: #373942;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@media all and (min-width: 30em) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+@media all and (min-width: 40em) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+@media all and (min-width: 60em) {
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media all and (min-width: 80em) {
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media all and (min-width: 100em) {
+  .card {
+    width: calc(25% - 2rem);
+  }
+}

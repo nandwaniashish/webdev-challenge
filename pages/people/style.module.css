@@ -4,6 +4,47 @@
 
 /* ref: https://preset-env.cssdb.org/ */
 
-.myData {
-  color: yellow;
+.people {
+  font-family: 'Open Sans', sans-serif;
+  margin: 3rem auto;
+
+  & .searchForm {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+  }
+
+  & h2 {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  & .departmentFilter {
+    margin-top: 3rem;
+    flex: 0 0 30%;
+  }
+
+  & .searchResults {
+    margin-bottom: 7rem;
+    margin-top: 3rem;
+  }
+
+  & .sticky {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 50em) {
+  /** changes based on font-size; zomming/magnifying **/
+  .people aside {
+    display: none;
+  }
+}
+
+@media all and (min-width: 60em) {
+  .people .departmentFilter {
+    flex: 0 0 20%;
+  }
 }

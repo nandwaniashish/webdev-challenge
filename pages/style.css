@@ -8,3 +8,38 @@
 @import '~@hashicorp/react-content/style.css';
 
 /* Global styles here */
+ul {
+  padding: 0;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.paragraph {
+  font-size: 0.875rem;
+  color: #4e515d;
+}
