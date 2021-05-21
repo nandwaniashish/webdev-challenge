@@ -3,7 +3,17 @@ import { isActive } from '../../utils'
 import styles from './tree.module.css'
 import './tree.module.css'
 
-const TreeNode = ({ node, onSelect, activeNode, onToggle, expandedNodes }) => {
+import { useRef } from 'react'
+
+const TreeNode = ({
+  node,
+  onSelect,
+  onBlur,
+  activeNode,
+  onToggle,
+  expandedNodes,
+}) => {
+  const nodeRef = useRef(null)
   const calculateClasses = (node) => {
     if (node.children.length > 0 && expandedNodes[node.id] === true) {
       return `${styles.expanded} ${styles.selected}`
@@ -28,6 +38,7 @@ const TreeNode = ({ node, onSelect, activeNode, onToggle, expandedNodes }) => {
             >
               <TreeNode
                 node={child}
+                onBlur={onBlur}
                 onSelect={onSelect}
                 key={node.id}
                 activeNode={activeNode}
@@ -44,6 +55,9 @@ const TreeNode = ({ node, onSelect, activeNode, onToggle, expandedNodes }) => {
     <>
       <span
         role="button"
+        ref={nodeRef}
+        data-node-id={node.id}
+        tabIndex="0"
         className={
           isActiveNode(node) ||
           (activeNode && activeNode.parent && activeNode.parent.id === node.id)
@@ -51,8 +65,23 @@ const TreeNode = ({ node, onSelect, activeNode, onToggle, expandedNodes }) => {
             : ''
         }
         onClick={(e) => {
+          e.preventDefault()
+          // console.log(nodeRef, 'nodeRef')
+          nodeRef.current && nodeRef.current.focus()
           onSelect(e, node)
           onToggle(node)
+        }}
+        onKeyDown={(e) => {
+          const pressed = e.keyCode === 13 || e.keyCode === 32
+          if (pressed) {
+            nodeRef.current && nodeRef.current.focus()
+            onSelect(e, node)
+            onToggle(node)
+            return
+          }
+        }}
+        onBlur={(e) => {
+          onBlur(e)
         }}
       >
         {node.name}

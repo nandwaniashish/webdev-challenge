@@ -3,7 +3,14 @@ import styles from './tree.module.css'
 import './tree.module.css'
 import { isActive } from '../../utils'
 
-const Tree = ({ rootNodes, onSelect, activeNode, onToggle, expandedNodes }) => {
+const Tree = ({
+  rootNodes,
+  onSelect,
+  activeNode,
+  onToggle,
+  onBlur,
+  expandedNodes,
+}) => {
   const calculateClasses = (node) => {
     if (node.children.length > 0 && expandedNodes[node.id] === true) {
       return `${styles.expanded} ${styles.selected}`
@@ -25,6 +32,7 @@ const Tree = ({ rootNodes, onSelect, activeNode, onToggle, expandedNodes }) => {
               node={node}
               key={`${node.id}`}
               onSelect={onSelect}
+              onBlur={onBlur}
               activeNode={activeNode}
               onToggle={onToggle}
               expandedNodes={expandedNodes}

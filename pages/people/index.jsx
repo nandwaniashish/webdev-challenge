@@ -30,6 +30,10 @@ function PeoplePage({ allPeople, allDepartments }) {
     setActiveNode(node)
   }
 
+  const onBlur = () => {
+    setActiveNode(null)
+  }
+
   const onToggle = (node) => {
     if (expandedNodes[node.id]) {
       expandedNodes[node.id] = !expandedNodes[node.id]
@@ -82,6 +86,7 @@ function PeoplePage({ allPeople, allDepartments }) {
           activeNode={activeNode}
           onToggle={onToggle}
           onSelect={onNodeSelect}
+          onBlur={onBlur}
           expandedNodes={expandedNodes}
         ></TreeView>
       </aside>
@@ -98,6 +103,7 @@ export async function getStaticProps() {
   //fetch flattened data from graphQL and create a data tree from it
   const departmentsTree = createDataTree(data.allDepartments)
   const transformedData = { ...data, allDepartments: departmentsTree }
+  //TODO: could add path to each node for more flexibility?
   return { props: transformedData }
 }
 
